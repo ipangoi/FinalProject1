@@ -1,0 +1,160 @@
+basePath: /
+definitions:
+  models.Todo:
+    properties:
+      ID:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      namaTodo:
+        type: string
+      tanggal:
+        type: string
+      updated_at:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a sevice for managing todos
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Todo API
+  version: "1.0"
+paths:
+  /todo:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all todos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Todo'
+      summary: Get details
+      tags:
+      - todo
+    post:
+      consumes:
+      - application/json
+      description: Post details of todo corresponding to the input ID
+      parameters:
+      - description: create todo
+        in: body
+        name: models.Todo
+        required: true
+        schema:
+          $ref: '#/definitions/models.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Todo'
+      summary: Post details for a given ID
+      tags:
+      - todo
+  /todo/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the todo corresponding to the input ID
+      parameters:
+      - description: ID of the todo to be deleted
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+      summary: Delete todo identified by the given ID
+      tags:
+      - todo
+    get:
+      consumes:
+      - application/json
+      description: Get details of todo corresponding to the input ID
+      parameters:
+      - description: ID of the todo
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Todo'
+      summary: Get details for a given ID
+      tags:
+      - todo
+    patch:
+      consumes:
+      - application/json
+      description: Update the todo corresponding to the input ID
+      parameters:
+      - description: ID of the todo to be updated
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Todo'
+      summary: Update todo identified by the given ID
+      tags:
+      - todo
+swagger: "2.0"
